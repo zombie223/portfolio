@@ -1,0 +1,200 @@
+* {
+  box-sizing: border-box;
+  cursor: none;
+}
+
+body {
+  background: #3b3d43;
+}
+
+button {
+  border: 0;
+  padding: 0;
+  font-family: inherit;
+  background: transparent;
+  color: inherit;
+  cursor: pointer;
+}
+
+.navbar {
+  position: fixed;
+
+  top: 0;
+  left: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  height: 64px;
+  background: transparent;
+  color: #f9f9f9;
+  font-family: "Poppins";
+  box-sizing: border-box;
+  transition: 0.4s;
+}
+
+.navbar-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.5);
+  visibility: hidden;
+  opacity: 0;
+}
+
+body.open .navbar-overlay {
+  visibility: visible;
+  opacity: 1;
+}
+
+.navbar-title {
+  margin: 0;
+  font-size: 22px;
+}
+
+.navbar-menu {
+  position: fixed;
+  top: 0;
+  left: 0;
+  translate: -100% 0;
+  width: 100vw;
+  height: 100%;
+  padding: 20px;
+  display: flex;
+  gap: 8px;
+  flex-direction: column;
+  align-items: flex-start;
+  background: black;
+  visibility: hidden;
+  transition: 0.5s;
+}
+
+body.open .navbar-menu {
+  translate: 0 0;
+  visibility: visible;
+}
+
+.navbar-menu > button {
+  color: rgba(255, 255, 255, 0.5);
+  background: transparent;
+  padding: 0 8px;
+  font-size: 20px;
+}
+.navbar-holder {
+  position: absolute;
+  top: 0;
+  left: 0;
+  display: grid;
+  place-items: center;
+  width: 64px;
+  height: 64px;
+  padding: 0;
+}
+.navbar-menu > button.active {
+  color: inherit;
+}
+#navholder > span {
+  display: block;
+  width: 28px;
+  height: 2px;
+  border-radius: 9999px;
+  background-color: white;
+  position: relative;
+}
+
+#navholder > span:not(:last-child) {
+  margin-bottom: 7px;
+}
+
+#navholder,
+#navholder > span {
+  transition: all 0.4s ease-in-out;
+}
+
+#navholder.navActive {
+  margin-left: 235px;
+}
+#navholder.navActive > span:nth-child(2) {
+  width: 0;
+}
+#navholder.navActive > span:nth-child(1),
+#navholder.navActive > span:nth-child(3) {
+  transition-delay: 0.4s;
+  width: 20px;
+}
+#navholder.navActive > span:nth-child(1) {
+  transform: translateY(9px);
+}
+#navholder.navActive > span:nth-child(3) {
+  transform: translateY(-9px) rotate(90deg);
+}
+.nav-menuList {
+  list-style-type: none;
+  padding-right: 30px;
+  color: white;
+}
+.nav-menuLink {
+  text-decoration: none;
+  color: inherit;
+  display: inline;
+  position: relative;
+  overflow: hidden;
+}
+.nav-menuLink::after {
+  content: "";
+  position: absolute;
+  right: 0;
+  width: 0;
+  bottom: -5px;
+  background: inherit;
+  height: 2px;
+  transition-property: width;
+  transition-duration: 0.3s;
+  transition-timing-function: ease-out;
+}
+.nav-menuLink:hover::after {
+  left: 0;
+  right: auto;
+  width: 100%;
+}
+
+.cursor {
+  width: 50px;
+  height: 50px;
+  border-radius: 100%;
+  transition: all 200ms ease-out;
+  position: fixed;
+  background-color: black;
+  pointer-events: none;
+  left: 0;
+  top: 0;
+  transform: translate(-50%, -50%);
+  transform-origin: 100% 100%;
+}
+
+.cursor2 {
+  width: 15px;
+  height: 15px;
+  border-radius: 100%;
+  background-color: black;
+  opacity: 0.3;
+  position: fixed;
+  transform: translate(-50%, -50%);
+  pointer-events: none;
+  transition: width 0.3s, height 0.3s, opacity 0.3s;
+}
+.cursor-hoverd {
+  width: 90px;
+  height: 90px;
+}
+.invertedCursor {
+  background-color: white;
+}
+.list-hoverd {
+  color: black !important;
+}
+.list-hoverd::after {
+  background-color: black;
+}
